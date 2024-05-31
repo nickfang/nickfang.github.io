@@ -11,11 +11,7 @@ const IdeasNavControl = () => {
 	return <h1>Ideas Nav Control</h1>;
 };
 
-const IdeasLayout = ({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) => {
+const IdeasLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
 		<>
 			<IdeasNavControl />

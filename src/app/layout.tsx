@@ -10,11 +10,7 @@ export const metadata: Metadata = {
 	description: 'Personal Website.',
 };
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
 		<html lang="en">
 			<body className={inter.className}>
@@ -23,4 +19,6 @@ export default function RootLayout({
 			</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;
