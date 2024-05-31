@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -35,7 +34,7 @@ const Ideas = () => {
 	return (
 		<div>
 			<h1>Ideas</h1>
-			<IdeasNav />
+			<IdeasNavBar />
 		</div>
 	);
 };
