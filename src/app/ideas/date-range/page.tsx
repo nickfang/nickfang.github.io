@@ -1,4 +1,3 @@
-
 'use client'; // Optional for client-side interactions
 
 import Head from 'next/head';

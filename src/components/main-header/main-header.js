@@ -1,8 +1,7 @@
-
-import Image from "next/image";
-import Link from "next/link";
-import MainHeaderBackground from "./main-header-background";
-import NavLink from "./nav-link";
+import Image from 'next/image';
+import Link from 'next/link';
+import MainHeaderBackground from './main-header-background';
+import NavLink from './nav-link';
 
 // import logoImg from '@/assets/logo.png';
 import classes from './main-header.module.css';
@@ -25,5 +24,5 @@ export default function MainHeader() {
         </nav>
       </header>
     </>
-  )
+  );
 }

@@ -3,7 +3,7 @@ const main = () => {
     <div>
       <h1>Nicholas Fang Dev</h1>
     </div>
-  )
-}
+  );
+};
 
-export default main
+export default main;

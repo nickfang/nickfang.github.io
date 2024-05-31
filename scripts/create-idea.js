@@ -8,15 +8,12 @@ const rl = readline.createInterface({
 });
 
 rl.question('Enter idea name (e.g., "Gradient Buttons"): ', (ideaName) => {
-  const fileName = ideaName
-    .toLowerCase()
-    .replace(/\s+/g, '-')
-    .trim();
+  const fileName = ideaName.toLowerCase().replace(/\s+/g, '-').trim();
 
   const ideasDir = `src/app/ideas/${fileName}`;
   const filePath = `${ideasDir}/page.tsx`;
 
-  console.log(ideasDir)
+  console.log(ideasDir);
   // Create directory (if it doesn't exist)
   fs.mkdirSync(ideasDir, { recursive: true });
 
