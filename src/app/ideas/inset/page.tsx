@@ -1,5 +1,15 @@
+'use client';
+
+import React, { useState } from 'react';
+
 const Inset = () => {
-  return <div></div>;
+	const [insetClass, setInsetClass] = useState('');
+
+	return (
+		<div className="parent">
+			<div className={`child ${insetClass}`} />
+		</div>
+	);
 };
 
 export default Inset;
