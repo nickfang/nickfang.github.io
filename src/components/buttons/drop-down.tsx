@@ -2,16 +2,22 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 
-interface DropDownProps {
-  options: string[];
+interface Option<T extends string | number> {
+  value: T;
+  label: string;
 }
 
-const Dropdown = (props: DropDownProps) => {
-  const { options } = props;
+interface DropDownProps<T extends string | number> {
+  options: Option<T>[];
+  onChange?: (value: T | null) => void;
+}
+
+const Dropdown = <T extends string | number>(props: DropDownProps<T>) => {
+  const { options, onChange } = props;
   const dropdownRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<Option<T> | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -26,9 +32,10 @@ const Dropdown = (props: DropDownProps) => {
     };
   }, []);
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (option: Option<T>) => {
     setSelectedOption(option);
     setIsOpen(false);
+    onChange?.(option.value);
   };
 
   return (
@@ -37,7 +44,7 @@ const Dropdown = (props: DropDownProps) => {
         onClick={() => setIsOpen(!isOpen)}
         className="bg-gray-200 text-gray-700 py-2 px-4 rounded inline-flex items-center"
       >
-        {selectedOption || 'Select an Option'}
+        {selectedOption?.label || 'Select an Option'}
         <svg
           className={`fill-current h-4 w-4 ml-2 transform ${isOpen ? 'rotate-180' : ''}`}
           xmlns="http://www.w3.org/2000/svg"
@@ -60,13 +67,13 @@ const Dropdown = (props: DropDownProps) => {
           >
             {options.map((option) => (
               <a
-                key={option}
+                key={option.value}
                 href="#"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 role="menuitem"
                 onClick={() => handleOptionClick(option)}
               >
-                {option}
+                {option.label}
               </a>
             ))}
           </div>
