@@ -6,19 +6,19 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Nicholas Fang - Dev',
-	description: 'Personal Website.',
+  title: 'Nicholas Fang - Dev',
+  description: 'Personal Website.',
 };
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-	return (
-		<html lang="en">
-			<body className={inter.className}>
-				<MainHeader />
-				<div className="m-[120px] p-[60px]">{children}</div>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <MainHeader />
+        <div className="m-[120px]">{children}</div>
+      </body>
+    </html>
+  );
 };
 
 export default RootLayout;
