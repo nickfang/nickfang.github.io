@@ -2,14 +2,14 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 
-interface Option<T extends string | number> {
+export interface Option<T extends string | number> {
   value: T;
   label: string;
 }
 
 interface DropDownProps<T extends string | number> {
   options: Option<T>[];
-  onChange?: (value: T | null) => void;
+  onChange?: (value: Option<T>) => void;
 }
 
 const Dropdown = <T extends string | number>(props: DropDownProps<T>) => {
@@ -35,7 +35,7 @@ const Dropdown = <T extends string | number>(props: DropDownProps<T>) => {
   const handleOptionClick = (option: Option<T>) => {
     setSelectedOption(option);
     setIsOpen(false);
-    onChange?.(option.value);
+    onChange?.(option);
   };
 
   return (

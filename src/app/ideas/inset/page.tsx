@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import Dropdown from '@/components/buttons/drop-down';
+import Dropdown, { Option } from '@/components/buttons/drop-down';
 
 const Inset = () => {
-  const [insetClass, setInsetClass] = useState('');
+  const [insetClass, setInsetClass] = useState<Option<number> | null>(null);
 
   const options = [
     { value: 1, label: 'Option 1' },
@@ -12,10 +12,21 @@ const Inset = () => {
     { value: 3, label: 'Option 3' },
   ];
 
+  const onChange = (value: Option<number>) => {
+    setInsetClass(value);
+  };
+
   return (
     <div className="parent h-600">
-      <div className={`child ${insetClass}`} />
-      <Dropdown options={options} />
+      <div className="flex justify-center align-top">
+        <div className="flex-none">
+          <Dropdown options={options} onChange={onChange} />
+        </div>
+        <div className="flex-1">
+          <div className={`${insetClass} border border-red-600 w-full h-full`} />
+          <div>{JSON.stringify(insetClass)}</div>
+        </div>
+      </div>
     </div>
   );
 };
