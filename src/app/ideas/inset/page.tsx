@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Dropdown, { Option } from '@/components/buttons/drop-down';
+import Dropdown, { Option } from '@/components/inputs/drop-down';
 
 const Inset = () => {
   const [insetClass, setInsetClass] = useState<Option<number> | null>(null);
