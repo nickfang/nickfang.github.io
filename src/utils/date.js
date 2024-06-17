@@ -57,13 +57,13 @@ const toDateString = (date) => {
   return displayDate;
 };
 
-const currentDate = new Date();
-console.log(formatForInput(currentDate));
-console.log(getWeekBoundary(currentDate));
-console.log(getNumWeeksPerMonth(currentDate));
-console.log(getWeekBoundariesPerMonth(currentDate));
-console.log(getWeekDates(1, 2020));
-console.log(parseDate('2020-12-26', 0));
+// const currentDate = new Date();
+// console.log(formatForInput(currentDate));
+// console.log(getWeekBoundary(currentDate));
+// console.log(getNumWeeksPerMonth(currentDate));
+// console.log(getWeekBoundariesPerMonth(currentDate));
+// console.log(getWeekDates(1, 2020));
+// console.log(parseDate('2020-12-26', 0));
 
 function formatForInput(date) {
   // console.log(inputDate)
