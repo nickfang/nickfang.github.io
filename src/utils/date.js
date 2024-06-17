@@ -57,79 +57,85 @@ const toDateString = (date) => {
   return displayDate;
 };
 
+const currentDate = new Date();
+console.log(formatForInput(currentDate));
+console.log(getWeekBoundary(currentDate));
+console.log(getNumWeeksPerMonth(currentDate));
+console.log(getWeekBoundariesPerMonth(currentDate));
+console.log(getWeekDates(1, 2020));
+console.log(parseDate('2020-12-26', 0));
+
+function formatForInput(date) {
+  // console.log(inputDate)
+  // const date = new Date(inputDate);
+  const format2Digit = (int) => ('0' + int).slice(-2);
+  const displayDate = `${date.getFullYear()}-${format2Digit(date.getMonth() + 1)}-${format2Digit(date.getDate())}`;
+  return displayDate;
+}
+
+// return the start of the week and the end of the week.
+// by default the start day is a Monday
+function getWeekBoundary(date, startDay = 1) {
+  const start = date.getDate() - ((7 + date.getDay() - startDay) % 7);
+  const weekStart = new Date(date.setDate(start));
+  const weekEnd = new Date(date.setDate(start + 6));
+  return { weekStart, weekEnd };
+}
+
+function getNumWeeksPerMonth(date) {
+  if (date.getUTCDay() !== 1) date.setUTCDate(1);
+  const start = date.getUTCDay();
+  const totalDays = new Date(date.getUTCFullYear(), date.getUTCMonth() + 1, 0).getUTCDate();
+  console.log({ totalDays });
+  const numWeeks = Math.ceil((start + totalDays) / 7);
+
+  return { numWeeks };
+}
+
+/**
+ * Returns the start and end dates for every week in a month.  The week range = [i, i+1).
+ * @param {Date} date - Created new Date can be any day of the month.
+ */
+function getWeekBoundariesPerMonth(date) {
+  date.setUTCDate(1);
+  const startOffset = date.getUTCDay();
+  date.setUTCMonth(date.getUTCMonth() + 1);
+  date.setUTCDate(0);
+  const totalDays = date.getUTCDate();
+  const numWeeks = Math.ceil((startOffset + totalDays) / 7);
+  date.setUTCDate(1 - startOffset);
+  const startDates = [date.toISOString().split('T')[0]];
+  for (let i = 0; i < numWeeks; i++) {
+    date.setUTCDate(date.getUTCDate() + 7);
+    startDates.push(date.toISOString().split('T')[0]);
+  }
+  console.log(startOffset, totalDays, startDates);
+  return { startDates, numWeeks, totalDays, startOffset };
+}
+
+function getWeekDates(month, year, startDay = 0) {
+  const date = new Date(year, month, 1);
+  const offset = date.getUTCDay() - startDay;
+  // if the offset is negative we are starting after the first of the month.  Make offset a week earlier.
+  const adjustedOffset = offset < 0 ? offset + 7 : offset;
+  date.setUTCDate(1 - adjustedOffset);
+  const weekDates = [];
+  while (date.getUTCMonth() <= month) {
+    weekDates.push(date.toISOString().split('T')[0]);
+    date.setUTCDate(date.getUTCDate() + 7);
+  }
+  const numWeeks = weekDates.length;
+  return { weekDates, numWeeks };
+}
+
 module.exports = {
   MONTHS,
   parseDate,
   validDateString,
   toDateString,
+  formatForInput,
+  getWeekBoundary,
+  getNumWeeksPerMonth,
+  getWeekBoundariesPerMonth,
+  getWeekDates,
 };
-
-// const currentDate = new Date();
-// console.log(formatForInput(currentDate));
-// console.log(getWeekBoundary(currentDate));
-// console.log(getNumWeeksPerMonth(currentDate));
-// console.log(getWeekBoundariesPerMonth(currentDate));
-// console.log(getWeekDates(1, 2020));
-// console.log(parseDate('2020-12-26', 0));
-
-// function formatForInput(date) {
-//   // console.log(inputDate)
-//   // const date = new Date(inputDate);
-//   const format2Digit = int => ('0' + int).slice(-2);
-//   const displayDate = `${date.getFullYear()}-${format2Digit(date.getMonth() + 1)}-${format2Digit(date.getDate())}`;
-//   return displayDate;
-// }
-
-// // return the start of the week and the end of the week.
-// // by default the start day is a Monday
-// function getWeekBoundary(date, startDay = 1) {
-//   start = date.getDate() - (7 + date.getDay() - startDay) % 7;
-//   const weekStart = new Date(date.setDate(start));
-//   const weekEnd = new Date(date.setDate(start + 7));
-//   return { weekStart, weekEnd };
-// }
-
-// function getNumWeeksPerMonth(date) {
-//   if (date.getUTCDay() !== 1) date.setUTCDate(1);
-//   const start = date.getUTCDay();
-//   const totalDays = new Date(date.getUTCFullYear(), date.getUTCMonth() + 1, 0).getUTCDate();
-//   const numWeeks = Math.ceil((start + totalDays) / 7);
-
-//   return { numWeeks };
-// }
-
-// /**
-//  * Returns the start and end dates for every week in a month.  The week range = [i, i+1).
-//  * @param {Date} date - Created new Date can be any day of the month.
-//  */
-// function getWeekBoundariesPerMonth(date) {
-//     date.setUTCDate(1);
-//     const startOffset = date.getUTCDay();
-//     date.setUTCMonth(date.getUTCMonth() + 1)
-//     date.setUTCDate(0);
-//     const totalDays = date.getUTCDate();
-//     const numWeeks = Math.ceil((startOffset + totalDays) / 7);
-//     date.setUTCDate(1 - startOffset);
-//     startDates = [date.toISOString().split('T')[0]];
-//     for (let i = 0; i < numWeeks; i++) {
-//       date.setUTCDate(date.getUTCDate() + 7)
-//       startDates.push(date.toISOString().split('T')[0])
-//     }
-//     console.log(startOffset, totalDays, startDates)
-//     return { startDates, numWeeks, totalDays, startOffset };
-// }
-
-// function getWeekDates(month, year, startDay = 0) {
-//   const date = new Date(year, month, 1);
-//   const offset = date.getUTCDay() - startDay;
-//   // if the offset is negative we are starting after the first of the month.  Make offset a week earlier.
-//   const adjustedOffset = offset < 0 ? offset + 7 : offset;
-//   date.setUTCDate(1 - adjustedOffset);
-//   const weekDates = []
-//   while (date.getUTCMonth() <= month) {
-//     weekDates.push(date.toISOString().split('T')[0]);
-//     date.setUTCDate(date.getUTCDate() + 7);
-//   }
-//   const numWeeks = weekDates.length - 1;
-//   return { weekDates, numWeeks };
-// }

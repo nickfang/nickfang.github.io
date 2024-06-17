@@ -3,6 +3,13 @@
 import Head from 'next/head';
 import { DateTime, Duration } from 'luxon';
 import { useState } from 'react';
+import {
+  getNumWeeksPerMonth,
+  getWeekBoundariesPerMonth,
+  getWeekBoundary,
+  getWeekDates,
+  toDateString,
+} from '@/utils/date';
 import TextField from '@/components/inputs/text-field';
 import DateInput from '@/components/inputs/date-input';
 
@@ -33,6 +40,14 @@ const DateRange = () => {
 
   let endDate = calculateEndDate();
 
+  const jsdate = startDate.toJSDate();
+  const weekBoundary = getWeekBoundary(jsdate);
+  const wbStart = toDateString(weekBoundary.weekStart);
+  const wbEnd = toDateString(weekBoundary.weekEnd);
+  const numWeeksPerMonth = getNumWeeksPerMonth(jsdate);
+  const weekBoundariesPerMonth = getWeekBoundariesPerMonth(jsdate);
+  const weekDates = getWeekDates(jsdate.getMonth(), jsdate.getFullYear());
+
   const handleDurationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDurationInput(event.target.value);
   };
@@ -54,9 +69,27 @@ const DateRange = () => {
         error={invalidDuration ? 'Invalid duration format' : undefined}
       />
 
-      <p>
-        Start Date: {startDate.toISODate()} End Date: {endDate}
-      </p>
+      <div>Start Date: {startDate.toISODate()}</div>
+      <div>End Date: {endDate}</div>
+      <div>
+        Week Boundary Start: {wbStart} - Week Boundary End: {wbEnd}
+      </div>
+      <div>Number of Weeks in Month: {numWeeksPerMonth.numWeeks}</div>
+      <div>
+        This Month Weeks Start Dates:{' '}
+        {weekBoundariesPerMonth.startDates.map((dateStr) => (
+          <div key={dateStr}>{dateStr}</div>
+        ))}
+      </div>
+      <div>This Months number of Weeks: {weekBoundariesPerMonth.numWeeks}</div>
+      <div>This Months number of Days: {weekBoundariesPerMonth.totalDays}</div>
+      <div>
+        Week Dates:{' '}
+        {weekDates.weekDates.map((dateStr) => (
+          <div key={dateStr}>{dateStr}</div>
+        ))}
+      </div>
+      <div>Num Weeks: {weekDates.numWeeks}</div>
     </main>
   );
 };
