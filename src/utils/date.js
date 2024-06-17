@@ -43,9 +43,15 @@ function validDateString(dateStr) {
       year: found[2],
       month: found[3],
       day: found[4],
+      valid: true,
     };
   }
-  return false;
+  return {
+    valid: false,
+    year: null,
+    month: null,
+    day: null,
+  };
 }
 
 const toDateString = (date) => {
@@ -86,7 +92,6 @@ function getNumWeeksPerMonth(date) {
   if (date.getUTCDay() !== 1) date.setUTCDate(1);
   const start = date.getUTCDay();
   const totalDays = new Date(date.getUTCFullYear(), date.getUTCMonth() + 1, 0).getUTCDate();
-  console.log({ totalDays });
   const numWeeks = Math.ceil((start + totalDays) / 7);
 
   return { numWeeks };
@@ -109,7 +114,6 @@ function getWeekBoundariesPerMonth(date) {
     date.setUTCDate(date.getUTCDate() + 7);
     startDates.push(date.toISOString().split('T')[0]);
   }
-  console.log(startOffset, totalDays, startDates);
   return { startDates, numWeeks, totalDays, startOffset };
 }
 
