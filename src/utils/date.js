@@ -56,9 +56,9 @@ function validDateString(dateStr) {
 
 const toDateString = (date) => {
   const format2Digit = (int) => `0${int}`.slice(-2);
-  const year = date.getFullYear();
-  const month = format2Digit(date.getMonth() + 1);
-  const day = format2Digit(date.getDate());
+  const year = date.getUTCFullYear();
+  const month = format2Digit(date.getUTCMonth() + 1);
+  const day = format2Digit(date.getUTCDate());
   const displayDate = `${year}-${month}-${day}`;
   return displayDate;
 };
@@ -75,16 +75,17 @@ function formatForInput(date) {
   // console.log(inputDate)
   // const date = new Date(inputDate);
   const format2Digit = (int) => ('0' + int).slice(-2);
-  const displayDate = `${date.getFullYear()}-${format2Digit(date.getMonth() + 1)}-${format2Digit(date.getDate())}`;
+  const displayDate = `${date.getUTCFullYear()}-${format2Digit(date.getUTCMonth() + 1)}-${format2Digit(date.getUTCDate())}`;
   return displayDate;
 }
 
 // return the start of the week and the end of the week.
 // by default the start day is a Monday
 function getWeekBoundary(date, startDay = 1) {
-  const start = date.getDate() - ((7 + date.getDay() - startDay) % 7);
-  const weekStart = new Date(date.setDate(start));
-  const weekEnd = new Date(date.setDate(start + 6));
+  const start = date.getUTCDate() - ((7 + date.getUTCDay() - startDay) % 7);
+  const weekStart = new Date(date.setUTCDate(start));
+  const weekStartDate = weekStart.getUTCDate();
+  const weekEnd = new Date(date.setUTCDate(weekStartDate + 6));
   return { weekStart, weekEnd };
 }
 

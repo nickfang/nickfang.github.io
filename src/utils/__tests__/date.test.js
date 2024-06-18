@@ -42,8 +42,8 @@ describe('date utils', () => {
   it('getWeekBoundary', () => {
     const date = new Date('2020-01-01');
     const weekBoundary = getWeekBoundary(date);
-    expect(weekBoundary.weekStart.getDate()).toBe(30);
-    expect(weekBoundary.weekEnd.getDate()).toBe(5);
+    expect(toDateString(weekBoundary.weekStart)).toBe('2019-12-30');
+    expect(toDateString(weekBoundary.weekEnd)).toBe('2020-01-05');
   });
   it('getNumWeeksPerMonth', () => {
     const date = new Date('2020-01-01');
