@@ -8,8 +8,8 @@ import {
   getWeekBoundariesPerMonth,
   getWeekBoundary,
   getWeekDates,
-  toDateString,
-} from '@/utils/date';
+  getDateString,
+} from '@utils/date';
 import TextField from '@/components/inputs/text-field';
 import DateInput from '@/components/inputs/date-input';
 
@@ -41,8 +41,8 @@ const DateRange = () => {
 
   const jsdate = startDate.toJSDate();
   const weekBoundary = getWeekBoundary(jsdate);
-  const wbStart = toDateString(weekBoundary.weekStart);
-  const wbEnd = toDateString(weekBoundary.weekEnd);
+  const wbStart = getDateString(weekBoundary.weekStart);
+  const wbEnd = getDateString(weekBoundary.weekEnd);
   const numWeeksPerMonth = getNumWeeksPerMonth(jsdate);
   const weekBoundariesPerMonth = getWeekBoundariesPerMonth(jsdate);
   const weekDates = getWeekDates(jsdate.getMonth(), jsdate.getFullYear());
@@ -76,7 +76,7 @@ const DateRange = () => {
       <div>Number of Weeks in Month: {numWeeksPerMonth.numWeeks}</div>
       <div>
         This Month Weeks Start Dates:{' '}
-        {weekBoundariesPerMonth.startDates.map((dateStr) => (
+        {weekBoundariesPerMonth.startDates.map((dateStr: string) => (
           <div key={dateStr}>{dateStr}</div>
         ))}
       </div>
@@ -84,7 +84,7 @@ const DateRange = () => {
       <div>This Months number of Days: {weekBoundariesPerMonth.totalDays}</div>
       <div>
         Week Dates:{' '}
-        {weekDates.weekDates.map((dateStr) => (
+        {weekDates.weekDates.map((dateStr: string) => (
           <div key={dateStr}>{dateStr}</div>
         ))}
       </div>
