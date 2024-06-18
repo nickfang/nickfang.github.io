@@ -1,3 +1,6 @@
+// new Date() creates a date object at UTC time.
+// Currently these functions are not timezone aware.
+
 const MONTHS = [
   'January',
   'February',
