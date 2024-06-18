@@ -30,7 +30,7 @@ function DateInput({ label, value, onChange, className, error }: DateInputProps)
   return (
     <div className="mb-4">
       {label && (
-        <label htmlFor="date-input" className="block text-gray-700 text-sm font-bold mb-2">
+        <label htmlFor="date-input" className="block text-gray-200 text-sm font-bold mb-2">
           {label}
         </label>
       )}

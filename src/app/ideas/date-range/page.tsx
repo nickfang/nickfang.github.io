@@ -25,7 +25,6 @@ const DateRange = () => {
     const durationRegex = /^(\d+)\s*(week|day|month|hour)s?$/i;
     const match = durationInput.match(durationRegex);
     if (!match) {
-      // setInvalidDuration(true);
       return;
     }
 
@@ -57,7 +56,7 @@ const DateRange = () => {
       <Head>
         <title>Date Time</title>
       </Head>
-      <h1>Date Time using Luxon</h1>
+      <h1>Date Duration Using Luxon</h1>
       <DateInput label="Start Date:" onChange={setStartDate} value={startDate} />
 
       <TextField

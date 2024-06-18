@@ -16,7 +16,7 @@ function TextField({ label, type = 'text', value, onChange, error, ...props }: T
       {label && (
         <label
           htmlFor={props.id || props.name}
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-200 text-sm font-bold mb-2"
         >
           {label}
         </label>
