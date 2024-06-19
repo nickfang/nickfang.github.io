@@ -9,9 +9,9 @@ import {
   getWeekBoundary,
   getWeekDates,
   getDateString,
-} from '@utils/date';
-import TextField from '@/components/inputs/text-field';
-import DateInput from '@/components/inputs/date-input';
+} from '@/utils/date';
+import TextField from '@/components/inputs/TextField';
+import DateInput from '@/components/inputs/DateInput';
 
 const DateRange = () => {
   const now = DateTime.now();
