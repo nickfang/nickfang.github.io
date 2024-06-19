@@ -123,7 +123,7 @@ function getNumWeeksPerMonth(date: Date) {
  * Returns the start and end dates for every week in a month.  The week range = [i, i+1).
  * @param {Date} date - Created new Date can be any day of the month.
  */
-function getWeekBoundariesPerMonth(date: Date) {
+function getInfoPerMonth(date: Date) {
   // Make a copy so we don't modify the original date
   const localDate = new Date(date);
   localDate.setUTCDate(1);
@@ -165,6 +165,6 @@ export {
   formatForInput,
   getWeekBoundary,
   getNumWeeksPerMonth,
-  getWeekBoundariesPerMonth,
+  getInfoPerMonth,
   getWeekDates,
 };

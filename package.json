@@ -11,6 +11,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.4",
     "luxon": "^3.4.4",
     "next": "^14",
     "react": "^18",

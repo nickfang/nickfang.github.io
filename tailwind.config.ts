@@ -4,6 +4,15 @@ const config: Config = {
   content: ['./src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
+      animation: {
+        scale: 'scale 0.3s ease-in-out', // Customize duration and easing as needed
+      },
+      keyframes: {
+        scale: {
+          '0%': { transform: 'scale(0)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
       colors: {
         main: '#395775',
         // 'accent': '#f29f05',

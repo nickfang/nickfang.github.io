@@ -5,7 +5,7 @@ import { DateTime, Duration } from 'luxon';
 import { useState } from 'react';
 import {
   getNumWeeksPerMonth,
-  getWeekBoundariesPerMonth,
+  getInfoPerMonth,
   getWeekBoundary,
   getWeekDates,
   getDateString,
@@ -44,7 +44,7 @@ const DateRange = () => {
   const wbStart = getDateString(weekBoundary.weekStart);
   const wbEnd = getDateString(weekBoundary.weekEnd);
   const numWeeksPerMonth = getNumWeeksPerMonth(jsdate);
-  const weekBoundariesPerMonth = getWeekBoundariesPerMonth(jsdate);
+  const infoPerMonth = getInfoPerMonth(jsdate);
   const weekDates = getWeekDates(jsdate.getMonth(), jsdate.getFullYear());
 
   const handleDurationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,12 +76,12 @@ const DateRange = () => {
       <div>Number of Weeks in Month: {numWeeksPerMonth.numWeeks}</div>
       <div>
         This Month Weeks Start Dates:{' '}
-        {weekBoundariesPerMonth.startDates.map((dateStr: string) => (
+        {infoPerMonth.startDates.map((dateStr: string) => (
           <div key={dateStr}>{dateStr}</div>
         ))}
       </div>
-      <div>This Months number of Weeks: {weekBoundariesPerMonth.numWeeks}</div>
-      <div>This Months number of Days: {weekBoundariesPerMonth.totalDays}</div>
+      <div>This Months number of Weeks: {infoPerMonth.numWeeks}</div>
+      <div>This Months number of Days: {infoPerMonth.totalDays}</div>
       <div>
         Week Dates:{' '}
         {weekDates.weekDates.map((dateStr: string) => (

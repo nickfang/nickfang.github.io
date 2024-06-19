@@ -6,7 +6,7 @@ import {
   formatForInput,
   getWeekBoundary,
   getNumWeeksPerMonth,
-  getWeekBoundariesPerMonth,
+  getInfoPerMonth,
   getWeekDates,
 } from '../date';
 
@@ -133,9 +133,9 @@ describe('date utils', () => {
       expect(numWeeks.numWeeks).toBe(numWeeksPerMonth[i - 1]);
     }
   });
-  it('getWeekBoundariesPerMonth', () => {
+  it('getInfoPerMonth', () => {
     const date = new Date('2020-01-01');
-    const weekBoundaries = getWeekBoundariesPerMonth(date);
+    const weekBoundaries = getInfoPerMonth(date);
     expect(weekBoundaries.startDates.length).toBe(6);
     expect(weekBoundaries.numWeeks).toBe(5);
     expect(weekBoundaries.totalDays).toBe(31);
