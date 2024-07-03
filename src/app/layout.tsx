@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'sonner';
 import MainHeader from '@/components/main-header/main-header';
 import './globals.css';
 
@@ -16,6 +17,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <body className={inter.className}>
         <MainHeader />
         <div className="m-[120px]">{children}</div>
+        <Toaster />
       </body>
     </html>
   );

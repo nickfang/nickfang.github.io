@@ -1,0 +1,14 @@
+.container {
+  margin: 0 64px;
+  padding: 12px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+/* .container button {
+  border: solid 1px white;
+  padding: 12px 24px;
+  border-radius: 8px;
+} */
