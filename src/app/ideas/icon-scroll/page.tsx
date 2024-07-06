@@ -1,6 +1,6 @@
 'use client'; // Optional for client-side interactions
 
-import AnimatedIcon from '@/components/display/AnimatedIcon';
+// import AnimatedIcon from '@/components/display/AnimatedIcon';
 import Head from 'next/head';
 
 export default function IconScroll() {
@@ -17,7 +17,7 @@ export default function IconScroll() {
         <title>icon-scroll</title>
       </Head>
       <h1>icon-scroll</h1>
-      <AnimatedIcon />
+      {/* <AnimatedIcon /> */}
       {/* Your idea code here */}
     </main>
   );
