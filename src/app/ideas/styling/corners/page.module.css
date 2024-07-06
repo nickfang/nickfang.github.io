@@ -1,16 +1,8 @@
 .container {
   @apply flex justify-center items-center flex-wrap;
 }
-
-.subcontainer {
-  /* @apply w-1/4; */
-}
-
 .item {
   @apply mx-8 my-4 px-8 py-4 border;
-}
-.item:after {
-  @apply text-center;
 }
 
 .rounded {
@@ -54,9 +46,19 @@
 }
 
 .scooped {
-  @apply item rounded-b-lg;
+  @apply item;
+}
+.scooped:before {
+  @apply content-[""] absolute -mt-10 -ml-14 w-12 h-12 rotate-45 rounded-full border border-gunmetal border-r-[#ffffff] bg-gunmetal;
+}
+.scooped2 {
+  @apply item;
+  mask: radial-gradient(20px at 40px 40px, transparent 98%, black) -40px -40px;
 }
 
 .inverted {
-  @apply item rounded-r-lg;
+  @apply item relative rounded-[0_15px_15px_15px] text-gunmetal bg-white;
+}
+.inverted:after {
+  @apply content-[""] absolute -top-[40px] -left-[0px] h-10 w-10 rounded-bl-3xl shadow-[0_20px_0_0_white];
 }

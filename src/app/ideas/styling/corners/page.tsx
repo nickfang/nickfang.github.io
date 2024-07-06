@@ -27,7 +27,8 @@ const Corners = () => {
 
         <div className={styles.notched3}>Notched</div>
 
-        <div className={styles.scoooped}>Scooped</div>
+        <div className={styles.scooped}>Scooped</div>
+        <div className={styles.scooped2}>Scooped</div>
 
         <div className={styles.inverted}>Inverted</div>
       </div>
