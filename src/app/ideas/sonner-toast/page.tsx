@@ -19,7 +19,7 @@ function MyToast() {
         </button>
         <button
           onClick={() => {
-            toast('Success Toast!', { description: 'success' });
+            toast('Success Toast!', { description: 'success description' });
           }}
         >
           Success w/ Description

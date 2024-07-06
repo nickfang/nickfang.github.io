@@ -1,8 +1,17 @@
+.top {
+  @apply my-12;
+}
 .container {
-  @apply flex justify-center items-center flex-wrap;
+  @apply flex justify-center items-center flex-col;
+}
+.sub_container {
+  @apply flex justify-start items-center flex-wrap w-full;
 }
 .item {
-  @apply mx-8 my-4 px-8 py-4 border;
+  @apply m-4 px-8 py-4 border;
+}
+.bottom {
+  @apply my-12;
 }
 
 .rounded {
@@ -58,6 +67,7 @@
 
 .inverted {
   @apply item relative rounded-[0_15px_15px_15px] text-gunmetal bg-white;
+  margin-top: 2rem;
 }
 .inverted:after {
   @apply content-[""] absolute -top-[40px] -left-[0px] h-10 w-10 rounded-bl-3xl shadow-[0_20px_0_0_white];

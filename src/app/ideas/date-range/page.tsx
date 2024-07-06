@@ -12,7 +12,6 @@ import {
 } from '@/utils/date';
 import TextField from '@/components/inputs/TextField';
 import DateInput from '@/components/inputs/DateInput';
-import AnimatedIcon from '@/components/displays/AnimatedIcon';
 
 const DateRange = () => {
   const now = DateTime.now();

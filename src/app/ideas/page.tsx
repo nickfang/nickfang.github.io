@@ -14,6 +14,7 @@ const IdeasNavBar = () => {
   const currentDir = segments.slice(1).join('/');
   const routes: Route[] = [
     { name: 'Date Range', path: `${currentDir}/date-range` },
+    { name: 'Corners', path: `${currentDir}/styling/corners` },
     { name: 'Inset', path: `${currentDir}/inset` },
   ];
 
