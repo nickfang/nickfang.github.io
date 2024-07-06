@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './page.module.css';
 
 const Corners = () => {
@@ -32,6 +33,12 @@ const Corners = () => {
 
         <div className={styles.inverted}>Inverted</div>
       </div>
+      <p>
+        Inspired by{' '}
+        <Link href="https://blog.logrocket.com/create-fancy-corners-css/">
+          Create Fancy Corners with CSS
+        </Link>
+      </p>
     </>
   );
 };
