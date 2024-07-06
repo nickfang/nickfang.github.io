@@ -22,7 +22,7 @@ function MyToast() {
             toast('Success Toast!', { description: 'success' });
           }}
         >
-          Success
+          Success w/ Description
         </button>
       </div>
     </div>

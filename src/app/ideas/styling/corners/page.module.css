@@ -1,0 +1,62 @@
+.container {
+  @apply flex justify-center items-center flex-wrap;
+}
+
+.subcontainer {
+  /* @apply w-1/4; */
+}
+
+.item {
+  @apply mx-8 my-4 px-8 py-4 border;
+}
+.item:after {
+  @apply text-center;
+}
+
+.rounded {
+  @apply item rounded-xl;
+}
+.rounded2 {
+  @apply item rounded-tl-lg;
+}
+.rounded3 {
+  @apply item rounded-tl-lg rounded-br-lg rounded-bl-3xl rounded-tr-3xl;
+}
+.rounded4 {
+  @apply item rounded-full;
+}
+
+.elliptical {
+  @apply item rounded-tl-[8px_48px];
+}
+.elliptical2 {
+  @apply item rounded-t-[50px_20%] rounded-b-[50px_20%];
+}
+.elliptical3 {
+  @apply item rounded-tl-[32px_8px] rounded-tr-[8px_32px] rounded-br-[32px_8px] rounded-bl-[8px_32px];
+}
+
+.notched {
+  @apply item;
+}
+.notched:before {
+  @apply content-[""] absolute -mt-8 -ml-12 w-8 h-8 rotate-45 bg-gunmetal border-gunmetal border-r-[#ffffff] border;
+}
+.notched2 {
+  @apply item;
+}
+.notched2:before {
+  @apply content-[""] absolute -mt-8 -ml-12 w-8 h-8 rotate-45 bg-gunmetal;
+}
+.notched3 {
+  @apply item;
+  clip-path: polygon(0% 12px, 12px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 12px);
+}
+
+.scooped {
+  @apply item rounded-b-lg;
+}
+
+.inverted {
+  @apply item rounded-r-lg;
+}

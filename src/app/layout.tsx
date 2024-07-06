@@ -16,7 +16,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <html lang="en">
       <body className={inter.className}>
         <MainHeader />
-        <div className="m-[120px]">{children}</div>
+        <div className="sm:w-full md:w-3/4 lg:w-2/3 sm:m-0 md:m-auto p-0">{children}</div>
         <Toaster />
       </body>
     </html>

@@ -13,9 +13,9 @@ const IdeasNavControl = () => {
 
 const IdeasLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="m-16 pt-8 pb-8 flex flex-col items-center justify-center bg-gunmetal text-white border border-yinmn-blue">
+    <div className="sm:w=full sm:m-0 lg:m-12 p-0 lg:p-16 flex flex-col items-center justify-center bg-gunmetal text-white border border-yinmn-blue">
       <IdeasNavControl />
-      <div className="p-16 w-full box-border">{children}</div>
+      <div className="w-full">{children}</div>
     </div>
   );
 };
