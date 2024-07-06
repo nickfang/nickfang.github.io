@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  console.log('RootLayout Render');
   return (
     <html lang="en">
       <body className={inter.className}>
