@@ -2,6 +2,7 @@
 
 import Head from 'next/head';
 import './page.css';
+import Image from 'next/image';
 
 // const expand_btn = document.querySelector('.expand-btn');
 
@@ -47,7 +48,7 @@ export default function sidebar() {
           <div className="sidebar-top-wrapper">
             <div className="sidebar-top">
               <a href="#" className="logo__wrapper">
-                <img src="assets/storeify.png" alt="Logo" className="logo-small" />
+                <Image src="assets/storeify.png" alt="Logo" className="logo-small" />
                 <span className="hide">Storeify</span>
               </a>
             </div>
@@ -317,7 +318,7 @@ export default function sidebar() {
           <div className="divider"></div>
           <div className="sidebar__profile">
             <div className="avatar__wrapper">
-              <img className="avatar" src="assets/profile.png" alt="Joe Doe Picture" />
+              <Image className="avatar" src="assets/profile.png" alt="Joe Doe Picture" />
               <div className="online__status"></div>
             </div>
             <section className="avatar__name hide">
