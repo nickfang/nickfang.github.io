@@ -1,0 +1,100 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #222; /* Dark background */
+  font-family: monospace; /* Sci-fi font */
+}
+
+.menu-item {
+  padding: 15px;
+  color: #ccc; /* Greyish text */
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s; /* Smooth transition */
+  position: relative; /* For outline positioning */
+}
+
+.menu-item:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* border: 2px solid #0f0; Green outline */
+  border: 2px solid #08f; /* Blue outline */
+  transform: scaleX(1); /* Start hidden */
+  transform-origin: left; /* Animate from left */
+  transition: transform 0.2s; /* Outline transition */
+}
+
+.submenu {
+  display: none; /* Hide initially */
+  margin-left: 20px;
+}
+
+.menu-item:hover .submenu {
+  display: block; /* Show on hover */
+}
+
+.menu2 {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 50px auto;
+  padding: 100px;
+  border-radius: 50%;
+  border: 2px solid #08f;
+}
+
+.menu2-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg) translate(0);
+  transform-origin: center;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.5s ease; /* Separate transitions for smooth effect */
+  /* transition: all 0.3s; */
+}
+
+.menu2:hover .menu2-item {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(calc(var(--index) * 72deg)) translate(100px);
+}
+
+.menu2-item:nth-child(1) {
+  --index: 0;
+}
+.menu2-item:nth-child(2) {
+  --index: 1;
+}
+.menu2-item:nth-child(3) {
+  --index: 2;
+}
+.menu2-item:nth-child(4) {
+  --index: 3;
+}
+.menu2-item:nth-child(5) {
+  --index: 4;
+}
+
+.menu3-item {
+  padding: 15px;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    #08f,
+    transparent
+  ); /* Subtle blue gradient */
+  background-size: 200% 100%; /* Double width for animation */
+  background-position: 0% 50%;
+  transition: background-position 0.75s;
+}
+
+.menu3-item:hover {
+  background-position: 100% 50%; /* Shift gradient on hover */
+  color: #fff; /* Change text color on hover */
+}
