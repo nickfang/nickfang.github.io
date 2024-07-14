@@ -6,28 +6,40 @@ import React, { useState, useRef, useEffect, MouseEventHandler } from 'react';
 interface DraggableButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   id: string;
   parentRef: React.RefObject<HTMLDivElement>;
-  popoverTarget?: string;
+  popovertarget?: string;
 }
 
 const DraggableButton = ({ id, parentRef, children, ...rest }: DraggableButtonProps) => {
-  const [isDragging, setIsDragging] = useState(false);
-  const [parentRect, setParentRect] = useState({ x: 0, y: 0, width: 0, height: 0 });
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  // these should be unchanged after the first render
+  const [rects, setRects] = useState({
+    parentX: 0,
+    parentY: 0,
+    parentWidth: 0,
+    parentHeight: 0,
+    buttonWidth: 0,
+    buttonHeight: 0,
+  });
+  // calculate the offset of the mouse click relative to the button's top-left corner
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (buttonRef.current && parentRef.current) {
-      const tempRect = parentRef.current.getBoundingClientRect();
-      setParentRect({
-        x: tempRect.x,
-        y: tempRect.y,
-        width: tempRect.width,
-        height: tempRect.height,
+      const buttonRect = buttonRef.current.getBoundingClientRect();
+      const parentRect = parentRef.current.getBoundingClientRect();
+      setRects({
+        parentX: parentRect.x,
+        parentY: parentRect.y,
+        parentWidth: parentRect.width,
+        parentHeight: parentRect.height,
+        buttonWidth: buttonRect.width,
+        buttonHeight: buttonRect.height,
       });
       setPosition({
-        x: tempRect.x,
-        y: tempRect.y,
+        x: parentRect.x,
+        y: parentRect.y,
       });
     }
   }, [buttonRef, parentRef]);
@@ -36,18 +48,14 @@ const DraggableButton = ({ id, parentRef, children, ...rest }: DraggableButtonPr
     const handleMouseMove = (event: MouseEvent) => {
       if (!isDragging || !parentRef.current || !buttonRef.current) return;
       const buttonRect = buttonRef.current.getBoundingClientRect();
-      const offsetX = event.clientX - buttonRect.left;
-      const offsetY = event.clientY - buttonRect.top;
-      console.log(offset);
       const newX = Math.max(
-        parentRect.x,
-        Math.min(event.clientX - offsetX, parentRect.x + parentRect.width - buttonRect.width)
+        rects.parentX,
+        Math.min(event.clientX - offset.x, rects.parentX + rects.parentWidth - rects.buttonWidth)
       );
       const newY = Math.max(
-        parentRect.y,
-        Math.min(event.clientY - offsetY, parentRect.y + parentRect.height - buttonRect.height)
+        rects.parentY,
+        Math.min(event.clientY - offset.y, rects.parentY + rects.parentHeight - rects.buttonHeight)
       );
-      console.log(newX, newY);
       setPosition({
         x: newX,
         y: newY,

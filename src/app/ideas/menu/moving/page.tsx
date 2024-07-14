@@ -11,7 +11,7 @@ const MovingMenu = () => {
     <div>
       <h2>Moving Menu</h2>
       <div className={styles.container} ref={parentRef}>
-        <DraggableButton id="trigger" parentRef={parentRef} popoverTarget="menu" className="">
+        <DraggableButton id="trigger" parentRef={parentRef} popovertarget="menu" className="">
           Move me!
         </DraggableButton>
         <div popover="auto" id="menu" data-anchor="trigger" />
