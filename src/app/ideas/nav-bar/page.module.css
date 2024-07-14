@@ -1,6 +1,6 @@
 .menu {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   background-color: #222; /* Dark background */
   font-family: monospace; /* Sci-fi font */
 }
@@ -53,6 +53,7 @@
   left: 50%;
   transform: translate(-50%, -50%) rotate(0deg) translate(0);
   transform-origin: center;
+  text-transform: uppercase;
   opacity: 0;
   transition:
     opacity 0.3s ease,
@@ -91,6 +92,7 @@
   ); /* Subtle blue gradient */
   background-size: 200% 100%; /* Double width for animation */
   background-position: 0% 50%;
+  text-transform: uppercase;
   transition: background-position 0.75s;
 }
 

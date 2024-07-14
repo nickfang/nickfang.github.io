@@ -39,7 +39,7 @@ const Dropdown = <T extends string | number>(props: DropDownProps<T>) => {
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative inline-block" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="bg-gray-200 text-gray-700 py-2 px-4 rounded inline-flex items-center"
@@ -56,8 +56,9 @@ const Dropdown = <T extends string | number>(props: DropDownProps<T>) => {
 
       {isOpen && (
         <div
-          className="mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+          className="absolute mt-2 z-10 w-48 rounded-md bg-bg opacity-95 shadow-lg ring-1 ring-black ring-opacity-5"
           ref={menuRef}
+          style={{ top: dropdownRef.current?.clientHeight || 0, left: 0 }}
         >
           <div
             className="py-1"
@@ -65,7 +66,7 @@ const Dropdown = <T extends string | number>(props: DropDownProps<T>) => {
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
-            {options.map((option) => (
+            {options?.map((option) => (
               <a
                 key={option.value}
                 href="#"
@@ -75,7 +76,7 @@ const Dropdown = <T extends string | number>(props: DropDownProps<T>) => {
               >
                 {option.label}
               </a>
-            ))}
+            )) || null}
           </div>
         </div>
       )}

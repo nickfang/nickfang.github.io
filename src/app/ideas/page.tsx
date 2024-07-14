@@ -2,23 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-interface Route {
-  name: string;
-  path: string;
-}
+import { getRoutes } from './routes';
 
 const IdeasNavBar = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const currentDir = segments.slice(1).join('/');
-  const routes: Route[] = [
-    { name: 'Date Range', path: `${currentDir}/date-range` },
-    { name: 'Corners', path: `${currentDir}/styling/corners` },
-    { name: 'Inset', path: `${currentDir}/inset` },
-    { name: 'Toast (Soner)', path: `${currentDir}/sonner-toast` },
-    { name: 'Draggable Button', path: `${currentDir}/input/buttons/draggable` },
-  ];
+  const routes = getRoutes(currentDir);
 
   return (
     <nav>
