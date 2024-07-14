@@ -17,6 +17,7 @@ const IdeasNavBar = () => {
     { name: 'Corners', path: `${currentDir}/styling/corners` },
     { name: 'Inset', path: `${currentDir}/inset` },
     { name: 'Toast (Soner)', path: `${currentDir}/sonner-toast` },
+    { name: 'Draggable Button', path: `${currentDir}/input/buttons/draggable` },
   ];
 
   return (
