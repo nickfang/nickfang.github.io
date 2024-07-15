@@ -8,6 +8,7 @@ const routes = {
   Corners: `/styling/corners`,
   'Toast (Soner)': `/sonner-toast`,
   'Draggable Button': `/input/buttons/draggable`,
+  'Nav Bars': `/nav-bar`,
   'Icon Scroll': `/icon-scroll`,
   Sidebar: `/sidebar`,
   // Inset: `/inset`,

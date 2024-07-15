@@ -44,16 +44,42 @@
   margin: 50px auto;
   padding: 100px;
   border-radius: 50%;
+}
+
+.menu2::after {
+  content: '';
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* inset: 0; Shorthand for top, right, bottom, left all 0 */
+  border-radius: inherit;
   border: 2px solid #08f;
+  transition:
+    width 0.5s ease,
+    height 0.5s ease,
+    top 0.5s ease,
+    left 0.5s ease;
+}
+
+.menu2:hover::after {
+  top: 50px;
+  left: 50px;
+  height: 100px;
+  width: 100px;
 }
 
 .menu2-item {
   position: absolute;
+  width: 100%;
+  padding-left: 64px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(0deg) translate(0);
   transform-origin: center;
   text-transform: uppercase;
+  text-align: left;
   opacity: 0;
   transition:
     opacity 0.3s ease,
