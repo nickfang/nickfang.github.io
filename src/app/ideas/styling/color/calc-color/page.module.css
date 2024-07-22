@@ -1,0 +1,38 @@
+.base div {
+  @apply p-4 mt-4;
+}
+.dark {
+  --bg-color: theme('colors.bg');
+}
+.light {
+  --bg-color: theme('colors.yinmn-blue');
+}
+.bg {
+  background-color: var(--bg-color);
+}
+.bg-darken,
+.bg-lighten {
+  color: color-contrast(
+    oklch(from var(--bg-color) calc(l * var(--_bg-lighter-factor)) c h) vs black,
+    white
+  );
+  background-color: oklch(from var(--bg-color) calc(l * var(--_bg-lighter-factor)) c h);
+}
+.bg-lighten {
+  --_bg-lighter-factor: 1.2;
+  .bg-lighten {
+    --_bg-lighter-factor: 1.4;
+    .bg-lighten {
+      --_bg-lighter-factor: 1.6;
+    }
+  }
+}
+.bg-darken {
+  --_bg-lighter-factor: 0.9;
+  .bg-darken {
+    --_bg-lighter-factor: 0.8;
+    .bg-darken {
+      --_bg-lighter-factor: 0.7;
+    }
+  }
+}
