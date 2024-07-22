@@ -7,7 +7,7 @@ const CalcColor = () => {
         Setting shades of backgrounds programatically using oklch for the background and
         color-contrast for the text.
       </p>
-      <div className={(styles.bg, styles.dark)}>
+      <div className={styles.dark}>
         Box
         <div className={styles['bg-lighten']}>
           Lighter box
@@ -25,7 +25,7 @@ const CalcColor = () => {
         </div>
       </div>
 
-      <div className={(styles.bg, styles.light)}>
+      <div className={styles.light}>
         Box
         <div className={styles['bg-lighten']}>
           Lighter box

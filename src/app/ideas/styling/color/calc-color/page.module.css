@@ -7,9 +7,6 @@
 .light {
   --bg-color: theme('colors.yinmn-blue');
 }
-.bg {
-  background-color: var(--bg-color);
-}
 .bg-darken,
 .bg-lighten {
   color: color-contrast(
