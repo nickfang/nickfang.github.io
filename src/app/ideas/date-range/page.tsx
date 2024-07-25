@@ -57,16 +57,21 @@ const DateRange = () => {
         <title>Date Time</title>
       </Head>
       <h1>Date Duration Using Luxon</h1>
-      <DateInput label="Start Date:" onChange={setStartDate} value={startDate} />
-
-      <TextField
-        label="Duration:"
-        type="text"
-        id="duration"
-        value={durationInput}
-        onChange={handleDurationChange}
-        error={invalidDuration ? 'Invalid duration format' : undefined}
-      />
+      <div className="m-8 flex">
+        <div className="mx-4 flex-1">
+          <DateInput label="Start Date:" onChange={setStartDate} value={startDate} />
+        </div>
+        <div className="mx-4 flex-1">
+          <TextField
+            label="Duration:"
+            type="text"
+            id="duration"
+            value={durationInput}
+            onChange={handleDurationChange}
+            error={invalidDuration ? 'Invalid duration format' : undefined}
+          />
+        </div>
+      </div>
 
       <div>Start Date: {startDate.toISODate()}</div>
       <div>End Date: {endDate}</div>

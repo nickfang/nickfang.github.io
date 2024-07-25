@@ -9,10 +9,10 @@ const routes = {
   'Toast (Soner)': `/sonner-toast`,
   'Draggable Button': `/input/buttons/draggable`,
   'Nav Bars': `/nav-bar`,
+  'Date Range': `/date-range`,
 };
 
 const unfinishedRoutes = {
-  'Date Range': `/date-range`,
   'Icon Scroll': `/icon-scroll`,
   Sidebar: `/sidebar`,
   // Inset: `/inset`,

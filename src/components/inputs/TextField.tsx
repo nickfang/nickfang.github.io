@@ -5,14 +5,22 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-function TextField({ label, type = 'text', value, onChange, error, ...props }: TextFieldProps) {
+function TextField({
+  label,
+  type = 'text',
+  value,
+  onChange,
+  className = '',
+  error,
+  ...props
+}: TextFieldProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
   return (
-    <div className="mb-4">
+    <div className={`mb-4 ${className}`}>
       {label && (
         <label
           htmlFor={props.id || props.name}

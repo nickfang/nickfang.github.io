@@ -9,7 +9,7 @@ interface DateInputProps {
   error?: string;
 }
 
-function DateInput({ label, value, onChange, className, error }: DateInputProps) {
+function DateInput({ label, value, onChange, className = '', error }: DateInputProps) {
   // Input value is a string, but converted to DateTime for internal handling
   const [inputValue, setInputValue] = useState<string>(value?.toISODate() ?? '');
 
@@ -28,7 +28,7 @@ function DateInput({ label, value, onChange, className, error }: DateInputProps)
   };
 
   return (
-    <div className="mb-4">
+    <div className={`mb-4 ${className}`}>
       {label && (
         <label htmlFor="date-input" className="block text-gray-200 text-sm font-bold mb-2">
           {label}
