@@ -123,25 +123,30 @@ function getNumWeeksPerMonth(date: Date) {
  * Returns the start and end dates for every week in a month.  The week range = [i, i+1).
  * @param {Date} date - Created new Date can be any day of the month.
  */
-function getInfoPerMonth(date: Date) {
+function getInfoPerMonth(date: Date, startDay = 1) {
   // Make a copy so we don't modify the original date
   const localDate = new Date(date);
+  const month = MONTHS[localDate.getUTCMonth()];
   localDate.setUTCDate(1);
+  // startOffset - 0 is Sunday, 1 is Monday, 2 is Tuesday, etc.
   const startOffset = localDate.getUTCDay();
+  // get end of month which is the 0th day of the next month
   localDate.setUTCMonth(localDate.getUTCMonth() + 1);
   localDate.setUTCDate(0);
   const totalDays = localDate.getUTCDate();
   const numWeeks = Math.ceil((startOffset + totalDays) / 7);
-  localDate.setUTCDate(1 - startOffset);
-  const startDates = [localDate.toISOString().split('T')[0]];
+
+  localDate.setUTCDate(1);
+  const startDates = [];
   for (let i = 0; i < numWeeks; i++) {
+    const { weekStart, weekEnd } = getWeekBoundary(localDate, startDay);
     localDate.setUTCDate(localDate.getUTCDate() + 7);
-    startDates.push(localDate.toISOString().split('T')[0]);
+    startDates.push(weekStart.toISOString().split('T')[0]);
   }
-  return { startDates, numWeeks, totalDays, startOffset };
+  return { month, startDates, numWeeks, totalDays, startOffset };
 }
 
-function getWeekDates(month: number, year: number, startDay = 0) {
+function getWeekDatesByMonthYear(month: number, year: number, startDay = 0) {
   const date: Date = new Date(year, month, 1);
   const offset = date.getUTCDay() - startDay;
   // if the offset is negative we are starting after the first of the month.  Make offset a week earlier.
@@ -166,5 +171,5 @@ export {
   getWeekBoundary,
   getNumWeeksPerMonth,
   getInfoPerMonth,
-  getWeekDates,
+  getWeekDatesByMonthYear,
 };

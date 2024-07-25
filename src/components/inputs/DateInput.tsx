@@ -39,7 +39,7 @@ function DateInput({ label, value, onChange, className = '', error }: DateInputP
         type="date"
         value={inputValue}
         onChange={handleChange}
-        className={`w-full py-2 px-3 border rounded text-gray-700 focus:outline-none focus:shadow-outline ${className} ${error ? 'border-red-500' : ''}`}
+        className={`w-full h-12 py-2 px-3 border rounded text-bg focus:outline-none focus:shadow-outline ${className} ${error ? 'border-red-500' : ''}`}
       />
       {error && <p className="text-red-500 text-xs italic mt-1">{error}</p>}
     </div>

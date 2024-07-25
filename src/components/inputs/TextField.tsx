@@ -37,7 +37,7 @@ function TextField({
         onFocus={handleFocus}
         onBlur={handleBlur}
         className={`
-          shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+          shadow appearance-none border rounded h-12 w-full py-2 px-3 text-bg leading-tight focus:outline-none focus:shadow-outline
           ${isFocused ? 'border-blue-500' : 'border-gray-300'}
           ${error ? 'border-red-500' : ''}
         `}

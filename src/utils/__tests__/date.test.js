@@ -136,9 +136,21 @@ describe('date utils', () => {
   it('getInfoPerMonth', () => {
     const date = new Date('2020-01-01');
     const weekBoundaries = getInfoPerMonth(date);
-    expect(weekBoundaries.startDates.length).toBe(6);
+    expect(weekBoundaries.startDates.length).toBe(5);
     expect(weekBoundaries.numWeeks).toBe(5);
     expect(weekBoundaries.totalDays).toBe(31);
+    const date2 = new Date('2024-07-25');
+    const weekBoundaries2 = getInfoPerMonth(date2, 0);
+    // expect(weekBoundaries2.startDates.length).toBe(5);
+    expect(weekBoundaries2.numWeeks).toBe(5);
+    expect(weekBoundaries2.totalDays).toBe(31);
+    expect(weekBoundaries2.startDates).toEqual([
+      '2024-06-30',
+      '2024-07-07',
+      '2024-07-14',
+      '2024-07-21',
+      '2024-07-28',
+    ]);
   });
   it('getWeekDates', () => {
     const weekDates = getWeekDates(1, 2020);

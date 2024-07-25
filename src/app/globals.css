@@ -38,6 +38,12 @@ h1 {
 h2 {
   @apply text-3xl font-bold text-center my-4;
 }
+h3 {
+  @apply text-2xl font-bold text-center my-4;
+}
+h4 {
+  @apply text-xl font-bold text-center my-4;
+}
 
 p {
   @apply my-4;
