@@ -10,6 +10,7 @@ import {
   getWeekDatesByMonthYear,
   getDateString,
   WEEKDAYS,
+  MONTHS,
 } from '@/utils/date';
 import TextField from '@/components/inputs/TextField';
 import DateInput from '@/components/inputs/DateInput';
@@ -100,7 +101,7 @@ const DateRange = () => {
         <div>
           <div>getInfoPerMonth()</div>
           <div className="mx-4">
-            <p>Sunday start dates for each week in the month of {infoPerMonth.month}</p>
+            <div>Sunday start dates for each week in the month of {infoPerMonth.month}</div>
             <div className="mx-4">
               {infoPerMonth.startDates.map((dateStr: string) => (
                 <div key={dateStr}>{dateStr}</div>
@@ -112,13 +113,20 @@ const DateRange = () => {
             <div>
               <p>This Months number of Days: {infoPerMonth.totalDays} </p>
             </div>
+          </div>
+        </div>
+        <div>
+          <div>getWeekDatesByMonthYear()</div>
+          <div className="mx-4">
+            <div className="mb-4">Num Weeks: {weekDates.numWeeks}</div>
             <div>
-              Week Dates:{' '}
-              {weekDates.weekDates.map((dateStr: string) => (
-                <div key={dateStr}>{dateStr}</div>
-              ))}
+              Week Dates for {MONTHS[jsdate.getMonth()]} {jsdate.getFullYear()}:{' '}
+              <div className="mx-4">
+                {weekDates.weekDates.map((dateStr: string) => (
+                  <div key={dateStr}>{dateStr}</div>
+                ))}
+              </div>
             </div>
-            <div>Num Weeks: {weekDates.numWeeks}</div>
           </div>
         </div>
       </div>

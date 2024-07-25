@@ -2,6 +2,9 @@
 // Currently these functions are not timezone aware.
 // When a date instance is used in a function, it is modified in place.
 
+// TODO: Refactor to have date functions that take in a Date object.  Then add functions that take in a month and year.
+// TODO: Think of this more like an api and what endpoints would be useful.
+
 const MONTHS = [
   'January',
   'February',
