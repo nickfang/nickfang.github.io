@@ -12,6 +12,8 @@ const config: Config = {
       charcoal: '#273c50',
       'yinmn-blue': '#395775',
       'vivid-sky-blue': '#22c5e9',
+      energy: '#5C7FAF',
+      hologram: '#80A7D3',
       white: '#ffffff',
     },
     fontFamily: {

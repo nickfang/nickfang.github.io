@@ -26,7 +26,7 @@ const IdeasNavBar = () => {
 const Ideas = () => {
   return (
     <div>
-      <h1 className="color-white">Ideas</h1>
+      <h1 className="mb-12 text-left color-white">Ideas</h1>
       <IdeasNavBar />
     </div>
   );
