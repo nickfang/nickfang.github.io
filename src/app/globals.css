@@ -46,7 +46,7 @@ h4 {
 }
 
 p {
-  @apply my-4;
+  @apply my-4 leading-7;
 }
 
 a {
