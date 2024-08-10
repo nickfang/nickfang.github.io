@@ -15,7 +15,7 @@ const settings = {
 
 const sketch = ({ context, width, height }) => {
   const agents = [];
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 200; i++) {
     const x = random.range(0, width);
     const y = random.range(0, height);
 
@@ -24,6 +24,24 @@ const sketch = ({ context, width, height }) => {
   return ({ context, width, height }) => {
     context.fillStyle = 'white';
     context.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < agents.length; i++) {
+      const agent = agents[i];
+      for (let j = i + 1; j < agents.length; j++) {
+        const other = agents[j];
+        const dist = agent.pos.getDistance(other.pos);
+
+        if (dist < 100) {
+          context.save();
+          context.lineWidth = math.mapRange(dist, 0, 25, 12, 1);
+          context.beginPath();
+          context.moveTo(agent.pos.x, agent.pos.y);
+          context.lineTo(other.pos.x, other.pos.y);
+          context.stroke();
+          context.restore();
+        }
+      }
+    }
 
     agents.forEach((agent) => {
       agent.update();
@@ -39,6 +57,12 @@ class Vector {
   constructor(x, y) {
     this.x = x;
     this.y = y;
+  }
+
+  getDistance(v) {
+    const dx = this.x - v.x;
+    const dy = this.y - v.y;
+    return Math.sqrt(dx * dx + dy * dy);
   }
 }
 
