@@ -13,18 +13,30 @@ const getGlyph = (v: number): string => {
 
 const CanvasType = () => {
   const [letter, setLetter] = useState<string>('A');
+  const [canvas, setCanvas] = useState<{ width: number, height: number }>({ width: 900, height: 900 });
+  const containerRef = useRef<HTMLDivElement>(null);
   const mainCanvasRef = useRef<HTMLCanvasElement>(null);
   const typeCanvasRef = useRef<HTMLCanvasElement>(null);
-  const width = 900;
-  const height = 900;
+  // const width = 900;
+  // const height = 900;
 
   useEffect(() => {
+    const handleResize = () => {
+      if (!containerRef.current) return;
+      const { width, height } = containerRef.current.getBoundingClientRect();
+      const side = Math.min(width, height) * 0.9;
+      console.log('width', width, 'height', height);
+      mainCanvasRef.current!.width = side;
+      mainCanvasRef.current!.height = side;
+      setCanvas({ width: side, height: side });
+    }
+
     const handleKeyUp = (e: any) => {
       if (!e.key) return;
       if (!e.key.match(/^[a-zA-Z0-9]$/)) return;
       setLetter(e.key);
     }
-
+    handleResize();
     document.addEventListener('keyup', handleKeyUp);
     return () => {
       document.removeEventListener('keyup', handleKeyUp);
@@ -47,8 +59,8 @@ const CanvasType = () => {
 
 
     const cell = 20;
-    const cols = Math.floor(width / cell);
-    const rows = Math.floor(height / cell);
+    const cols = Math.floor(canvas.width / cell);
+    const rows = Math.floor(canvas.height / cell);
     const numCells = cols * rows;
 
     typeCanvas.width = cols;
@@ -85,7 +97,7 @@ const CanvasType = () => {
     const typeData = typeContext.getImageData(0, 0, cols, rows).data;
 
     mainContext.fillStyle = 'black';
-    mainContext.fillRect(0, 0, width, height);
+    mainContext.fillRect(0, 0, canvas.width, canvas.height);
     mainContext.textBaseline = 'middle';
     mainContext.textAlign = 'center';
 
@@ -128,18 +140,18 @@ const CanvasType = () => {
   })
 
   return (
-    <div>
+    <div ref={containerRef}>
       <h1>Canvas: Random Typography</h1>
-      <div className="h-16 m-8 flex justify-start items-center">
+      <div className="h-16 m-8 flex justify-center items-center">
         <div className="pr-4">
-          Type a letter:
+          Type a letter or number:
         </div>
         <div>
-          <canvas ref={typeCanvasRef} width={width} height={height} />
+          <canvas ref={typeCanvasRef} width={canvas.width} height={canvas.height} />
         </div>
 
       </div>
-      <canvas ref={mainCanvasRef} width={width} height={height} />
+      <canvas className="m-auto" ref={mainCanvasRef} width={canvas.width} height={canvas.height} />
     </div>
   );
 }
