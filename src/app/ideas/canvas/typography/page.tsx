@@ -142,7 +142,7 @@ const CanvasType = () => {
   return (
     <div ref={containerRef}>
       <h1>Canvas: Random Typography</h1>
-      <div className="h-16 m-8 flex justify-center items-center">
+      <div className="h-16 my-8 flex justify-center items-center">
         <div className="pr-4">
           Type a letter or number:
         </div>
@@ -151,7 +151,7 @@ const CanvasType = () => {
         </div>
 
       </div>
-      <canvas className="m-auto" ref={mainCanvasRef} width={canvas.width} height={canvas.height} />
+      <canvas className="mx-auto my-8" ref={mainCanvasRef} width={canvas.width} height={canvas.height} />
     </div>
   );
 }

@@ -22,8 +22,11 @@ const params = {
 
 const sketch = () => {
   return ({ context, width, height, frame }) => {
+    context.fillStyle = 'black';
+    context.fillRect(0, 0, width, height);
     context.fillStyle = 'white';
-    context.clearRect(0, 0, width, height);
+    context.strokeStyle = 'white';
+
     const cols = params.cols;
     const rows = params.rows;
     const numCells = cols * rows;

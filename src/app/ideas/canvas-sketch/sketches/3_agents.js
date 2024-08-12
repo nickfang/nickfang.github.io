@@ -22,8 +22,10 @@ const sketch = ({ context, width, height }) => {
     agents.push(new Agent(x, y));
   }
   return ({ context, width, height }) => {
+    context.fillStyle = 'black';
+    context.fillRect(0, 0, width, height);
     context.fillStyle = 'white';
-    context.clearRect(0, 0, width, height);
+    context.strokeStyle = 'white';
 
     for (let i = 0; i < agents.length; i++) {
       const agent = agents[i];

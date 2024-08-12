@@ -30,6 +30,6 @@
     ".next/types/**/*.ts",
     "src/utils/__tests__/prototype.test.js",
     "src/utils/prototype.js"
-  ],
+, "src/app/ideas/canvas/layout.tsx"  ],
   "exclude": ["node_modules"]
 }

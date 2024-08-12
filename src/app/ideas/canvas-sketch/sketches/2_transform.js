@@ -16,10 +16,11 @@ const randomRange = (min, max) => {
 
 const sketch = () => {
   return ({ context, width, height }) => {
-    context.fillStyle = 'white';
-    context.clearRect(0, 0, width, height);
-
     context.fillStyle = 'black';
+    context.fillRect(0, 0, width, height);
+
+    context.fillStyle = 'white';
+    context.strokeStyle = 'white';
 
     const cx = width * 0.5;
     const cy = height * 0.5;
@@ -52,7 +53,7 @@ const sketch = () => {
       context.translate(cx, cy);
       context.rotate(-angle);
 
-      context.lineWidth = random.range(5, 15);
+      context.lineWidth = random.range(2, 15);
 
       context.beginPath();
       context.arc(

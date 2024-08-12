@@ -6,9 +6,11 @@ const settings = {
 
 const sketch = () => {
   return ({ context, width, height }) => {
+    context.fillStyle = 'black';
+    context.fillRect(0, 0, width, height);
     context.fillStyle = 'white';
-    context.clearRect(0, 0, width, height);
-
+    context.strokeStyle = 'white';
+    context.lineWidth = 3;
     const w = width * 0.1;
     const h = height * 0.1;
     const gap = width * 0.03;
@@ -27,9 +29,12 @@ const sketch = () => {
         context.rect(x, y, w, h);
         context.stroke();
         if (Math.random() > 0.5) {
+          context.save();
+          context.lineWidth = 8;
           context.beginPath();
           context.rect(x + off / 2, y + off / 2, w - off, h - off);
           context.stroke();
+          context.restore();
         }
       }
     }
