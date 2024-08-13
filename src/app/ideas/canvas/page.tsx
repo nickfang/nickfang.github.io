@@ -17,7 +17,7 @@ const CanvasCreations = () => {
       <div className="flex flex-wrap justify-center align-middle">
         {canvases.map((canvas, index) => (
           <div key={index} className="my-8 mx-4">
-            <Link href={canvas.path}><Image src={canvas.filename} alt={canvas.name} width={250} height={250} /></Link>
+            <Link href={canvas.path}><Image src={canvas.filename} alt={canvas.name} width={200} height={200} /></Link>
           </div>
         ))}
 
