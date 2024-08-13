@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, EventHandler, KeyboardEventHandler, ReactNode } from 'react';
 
-const CanvasLayout = ({ children }) => {
+const CanvasLayout = ({ children }: { children: ReactNode}) => {
   // const [letter, setLetter] = useState<string>('A');
   // const [canvas, setCanvas] = useState<{ width: number, height: number }>({ width: 900, height: 900 });
   // const containerRef = useRef<HTMLDivElement>(null);

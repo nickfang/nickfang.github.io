@@ -4,6 +4,7 @@ interface Route {
 }
 
 const routes = {
+  'Canvas Creations': `/canvas`,
   Corners: `/styling/corners`,
   'Calculated Background Colors': '/styling/color/calc-color',
   'Toast (Soner)': `/sonner-toast`,
