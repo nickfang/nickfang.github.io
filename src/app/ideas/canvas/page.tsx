@@ -6,8 +6,9 @@ const CanvasCreations = () => {
   const canvases = [
     { name: 'Squares', path: '/ideas/canvas/squares', filename: '/images/canvas-squares.png' },
     { name: 'Circles', path: '/ideas/canvas/circles', filename: '/images/canvas-circles.png' },
-    { name: 'Line', path: '/ideas/canvas/lines', filename: '/images/canvas-lines.png' },
-    { name: 'Connected', path: '/ideas/canvas/connected', filename: '/images/canvas-connected.png' },
+    // need to make animation work for these.  removing while I'm implementing.
+    // { name: 'Line', path: '/ideas/canvas/lines', filename: '/images/canvas-lines.png' },
+    // { name: 'Connected', path: '/ideas/canvas/connected', filename: '/images/canvas-connected.png' },
     { name: 'Typography', path: '/ideas/canvas/typography', filename: '/images/canvas-typography.png' },
   ]
   return (
