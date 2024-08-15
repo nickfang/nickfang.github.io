@@ -8,7 +8,7 @@ const CanvasCreations = () => {
     { name: 'Circles', path: '/ideas/canvas/circles', filename: '/images/canvas-circles.png' },
     // need to make animation work for these.  removing while I'm implementing.
     // { name: 'Line', path: '/ideas/canvas/lines', filename: '/images/canvas-lines.png' },
-    // { name: 'Connected', path: '/ideas/canvas/connected', filename: '/images/canvas-connected.png' },
+    { name: 'Connected', path: '/ideas/canvas/connected', filename: '/images/canvas-connected.png' },
     { name: 'Typography', path: '/ideas/canvas/typography', filename: '/images/canvas-typography.png' },
   ]
   return (

@@ -54,10 +54,10 @@ class Agent {
 
 const CanvasConnected = () => {
   const [agents, setAgents] = useState<Agent[]>([]);
-  const [canvas, setCanvas] = useState<{ width: number, height: number }>({ width: 600, height: 600 });
+  const [canvas, setCanvas] = useState<{ width: number, height: number }>({ width: 900, height: 900 });
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < 10; i++) {
     const x = random.range(0, canvas.width);
     const y = random.range(0, canvas.height);
 
@@ -67,7 +67,7 @@ const CanvasConnected = () => {
     const handleResize = () => {
       if (!containerRef.current) return;
       const { width, height } = containerRef.current.getBoundingClientRect();
-      const side = Math.min(width, height) * 0.9;
+      const side = width // Math.min(width, height) * 0.9;
       canvasRef.current!.width = side;
       canvasRef.current!.height = side;
       setCanvas({ width: side, height: side });
@@ -87,29 +87,40 @@ const CanvasConnected = () => {
     if (!canvas) return;
     const context = canvas.getContext('2d');
     if (!context) return;
+    let animationFrameId: number;
 
-    context.reset()
-    context.fillStyle = 'black';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = 'white';
-    context.strokeStyle = 'white';
-    for (let i = 0; i < agents.length; i++) {
-      const agent = agents[i];
-      for (let j = i + 1; j < agents.length; j++) {
-        const other = agents[j];
-        const dist = agent.pos.getDistance(other.pos);
+    const draw = () => {
+      context.reset()
+      context.fillStyle = 'black';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.fillStyle = 'white';
+      context.strokeStyle = 'white';
+      for (let i = 0; i < agents.length; i++) {
+        const agent = agents[i];
+        for (let j = i + 1; j < agents.length; j++) {
+          const other = agents[j];
+          const dist = agent.pos.getDistance(other.pos);
 
-        if (dist < 100) {
-          context.save();
-          context.lineWidth = math.mapRange(dist, 0, 25, 12, 1);
-          context.beginPath();
-          context.moveTo(agent.pos.x, agent.pos.y);
-          context.lineTo(other.pos.x, other.pos.y);
-          context.stroke();
-          context.restore();
+          if (dist < 100) {
+            context.save();
+            context.lineWidth = math.mapRange(dist, 0, 25, 12, 1);
+            context.beginPath();
+            context.moveTo(agent.pos.x, agent.pos.y);
+            context.lineTo(other.pos.x, other.pos.y);
+            context.stroke();
+            context.restore();
+          }
         }
       }
+      agents.forEach((agent) => {
+        agent.update();
+        agent.draw(context);
+        agent.bounce(canvas.width, canvas.height);
+      });
+      animationFrameId = requestAnimationFrame(draw);
     }
+    animationFrameId = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(animationFrameId);
   });
   return (
     <div ref={containerRef}>
