@@ -9,7 +9,7 @@ const routes = {
   'Calculated Background Colors': '/styling/color/calc-color',
   'Toast (Soner)': `/sonner-toast`,
   'Draggable Button': `/input/buttons/draggable`,
-  'Nav Bars': `/nav-bar`,
+  'Nav Bars': `/menu/nav-bar`,
   'Date Range': `/date-range`,
 };
 
