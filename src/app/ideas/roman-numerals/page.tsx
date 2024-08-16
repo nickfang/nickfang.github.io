@@ -28,6 +28,22 @@ function getRomanNumeral(number: number): string {
   return output;
 }
 
+export function solution(number: number): string {
+  const num_to_string = `${number}`.split('')
+  const ones = ['I','X','C','M']
+  const fives = ['V','L','D']
+  const transform = (n: number, index: number): string => {
+    if (!n) return ''
+    else if (n === 9) return ones[index] + ones[index + 1]
+    else if (n === 4) return ones[index] + fives[index]
+    else if (n >= 5 && n % 5 <= 3) return fives[index] + transform(n % 5, index)
+    else return ones[index].repeat(n)
+  }
+  return num_to_string.reduce((roman, current, index, arr) => {
+    return roman + transform(parseInt(current), arr.length - index - 1)
+  }, "")
+}
+
 // TODO:  need to do some input validation, can get in an infinite loop
 const RomanNumerals = () => {
   const [number, setNumber] = useState<number>(0);
