@@ -31,6 +31,13 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Tools
+`/tools` is a folder for tools that help with development
+
+### canvas-sketch
+> https://github.com/mattdesl/canvas-sketch<br>
+> This is a tool for creating generative art in Javascript and the browser.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
