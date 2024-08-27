@@ -7,7 +7,7 @@ import {
   getWeekBoundary,
   getNumWeeksPerMonth,
   getInfoPerMonth,
-  getWeekDates,
+  getWeekDatesByMonthYear,
 } from '../date';
 
 describe('date utils', () => {
@@ -153,7 +153,7 @@ describe('date utils', () => {
     ]);
   });
   it('getWeekDates', () => {
-    const weekDates = getWeekDates(1, 2020);
+    const weekDates = getWeekDatesByMonthYear(1, 2020);
     expect(weekDates.weekDates.length).toBe(5);
     expect(weekDates.weekDates).toEqual([
       '2020-01-26',

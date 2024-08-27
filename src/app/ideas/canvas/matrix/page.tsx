@@ -154,3 +154,5 @@ const MatrixBG = () => {
 };
 
 export default MatrixBG;
+
+// https://medium.com/@ruse.marshall/converting-a-vanilla-js-canvas-animation-to-react-78443bad6d7b
